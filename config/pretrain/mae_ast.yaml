@@ -1,0 +1,99 @@
+# @package _group_
+
+common:
+  fp16: true
+  log_format: json
+  log_interval: 200
+  seed: 1337
+  tensorboard_logdir: tblog
+
+checkpoint:
+  save_interval_updates: 25000
+  keep_interval_updates: 1
+  no_epoch_checkpoints: true
+
+
+distributed_training:
+  ddp_backend: no_c10d
+  distributed_backend: 'nccl'
+  distributed_world_size: 32
+  nprocs_per_node: 8
+  find_unused_parameters: true
+
+task:
+  _name: mae_ast_pretraining
+  data: ???
+  feature_type: "fbank"
+  mask_type: "random_mask"
+  sample_rate: 16000
+  max_sample_size: 250000
+  min_sample_size: 32000
+  feature_rate: 100
+  feature_dim: 128
+  pad_audio: false
+  random_crop: true
+  normalize: false # must be consistent with extractor
+  deltas: false
+
+dataset:
+  num_workers: 6
+  max_tokens: 1400000
+  skip_invalid_size_inputs_valid_test: true
+  validate_interval: 5
+  validate_interval_updates: 10000
+
+criterion:
+  _name: mae_ast
+  classification_weight: 1
+  reconstruction_weight: 10
+
+optimization:
+  max_update: 400000
+  lr: [0.0001]
+  clip_norm: 10.0
+
+optimizer:
+  _name: adam
+  adam_betas: (0.9,0.98)
+  adam_eps: 1e-06
+  weight_decay: 0.01
+
+lr_scheduler:
+  _name: polynomial_decay
+  warmup_updates: 32000
+
+model:
+  _name: mae_ast
+  dropout_input: 0.1
+  dropout: 0.1
+  attention_dropout: 0.1
+  activation_dropout: 0.0
+  feature_grad_mult: 0.1
+  encoder_layerdrop: 0.05
+  decoder_layerdrop: 0.0
+  encoder_layers: 12
+  decoder_layers: 2
+  random_mask_prob: 0.75
+  enc_conv_pos: false
+  enc_sine_pos: true
+  dec_conv_pos: false
+  dec_sine_pos: true
+  ast_kernel_size_chan: 16
+  ast_kernel_size_time: 16
+  ast_kernel_stride_chan: 16
+  ast_kernel_stride_time: 16
+
+hydra:
+  job:
+    config:
+      override_dirname:
+        kv_sep: '-'
+        item_sep: '__'
+        exclude_keys:
+          - run
+          - task.data
+  run:
+    dir: ???
+  sweep:
+    dir: ???
+    subdir: ${hydra.job.config_name}__${hydra.job.override_dirname}
