@@ -22,7 +22,7 @@ cd ~/s3prl
 pip install -e ./
 ```
 
-##Fine-tuning
+## Fine-tuning
 
 Fine-tuning commands should be performed in ``~/s3prl/s3prl`` with ``s3prl_mae_ast`` activated
 All downstream configuration files used in the paper can be accessed in s3prl/config. These contain default settings or slight modifications to gradient accumulate steps and batch size to mimic default settings on our hardware.
