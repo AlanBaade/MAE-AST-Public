@@ -64,7 +64,7 @@ fairseq-hydra-train \
   model.encoder_layers=12 model.decoder_layers=2 \
   model.random_mask_prob=0.75 task.mask_type="chunk_mask" \
   model.ast_kernel_size_chan=16 model.ast_kernel_size_time=16 model.ast_kernel_stride_chan=16 model.ast_kernel_stride_time=16 \
-  criterion.classification_weight=1 criterion.reconstruction_weight=10 \ 
+  criterion.classification_weight=1 criterion.reconstruction_weight=10 \
   distributed_training.distributed_world_size=1 distributed_training.nprocs_per_node=1 \
   common.log_interval=200 checkpoint.save_interval_updates=25000 \
   optimization.max_update=550000 dataset.max_tokens=8388608 optimization.lr=[0.0001]\
@@ -80,7 +80,7 @@ fairseq-hydra-train \
   model.encoder_layers=12 model.decoder_layers=2 \
   model.random_mask_prob=0.75 task.mask_type="random_mask" \
   model.ast_kernel_size_chan=128 model.ast_kernel_size_time=2 model.ast_kernel_stride_chan=128 model.ast_kernel_stride_time=2 \
-  criterion.classification_weight=1 criterion.reconstruction_weight=10 \ 
+  criterion.classification_weight=1 criterion.reconstruction_weight=10 \
   distributed_training.distributed_world_size=1 distributed_training.nprocs_per_node=1 \
   common.log_interval=200 checkpoint.save_interval_updates=25000 \
   optimization.max_update=550000 dataset.max_tokens=8388608 optimization.lr=[0.0001]\
@@ -96,7 +96,7 @@ fairseq-hydra-train \
   model.encoder_layers=12 model.decoder_layers=2 \
   model.random_mask_prob=1.45 task.mask_type="retain_spans" \
   model.ast_kernel_size_chan=128 model.ast_kernel_size_time=2 model.ast_kernel_stride_chan=128 model.ast_kernel_stride_time=2 \
-  criterion.classification_weight=1 criterion.reconstruction_weight=10 \ 
+  criterion.classification_weight=1 criterion.reconstruction_weight=10 \
   distributed_training.distributed_world_size=1 distributed_training.nprocs_per_node=1 \
   common.log_interval=200 checkpoint.save_interval_updates=25000 \
   optimization.max_update=550000 dataset.max_tokens=8388608 optimization.lr=[0.0001]\
