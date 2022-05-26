@@ -1,5 +1,5 @@
 # MAE-AST
-This repository contains the code for the paper [MAE-AST: Masked Autoencoding Audio Spectrogram Transformer](https://arxiv.org/abs/2203.16691)
+This repository contains the code for the paper [MAE-AST: Masked Autoencoding Audio Spectrogram Transformer](https://arxiv.org/abs/2203.16691). Pretrained checkpoints to be hosted in the coming few days.
 
 This repository contains three folders: config, mae_ast, and s3prl. Config contains a default pre-training config for the mae-ast. The mae_ast folder contains the main code for the model, and runs under [fairseq](https://github.com/facebookresearch/fairseq). This includes a criterion, task, data loading, and models. The s3prl folder provides the upstream model and configuration for fine-tuning the MAE-AST on Superb tasks under the [S3prl repository](https://github.com/s3prl/s3prl). This repository does not include fine-tuning code for AudioSet, Librispeech, and KS2, which are instead evaluated under the [SSAST library](https://github.com/YuanGongND/ssast) with no settings changed.
 
