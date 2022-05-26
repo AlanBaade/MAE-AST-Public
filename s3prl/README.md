@@ -13,24 +13,19 @@ cd ~/s3prl
 pip install -e ./
 cd ~/fairseq
 pip install -e ./
-pip install torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html
-```
-
-Rerunning this generally fixes further environment errors
-```
-cd ~/s3prl
-pip install -e ./
+pip install --upgrade torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113
+pip install --upgrade protobuf==3.20.0
 ```
 
 ## Fine-tuning
 
 Fine-tuning commands should be performed in ``~/s3prl/s3prl`` with ``s3prl_mae_ast`` activated
-All downstream configuration files used in the paper can be accessed in s3prl/config. These contain default settings or slight modifications to gradient accumulate steps and batch size to mimic default settings on our hardware.
+All downstream configuration files used in the paper can be accessed in s3prl/config. These contain default settings or slight modifications to gradient accumulate steps and batch size to mimic default settings on our hardware. Datasets will need to be downloaded as specified in s3prl.
 
 What follows are the exact run commands used alongside these config files for fine-tuning (disregarding template paths):
 #### Command to sanity check imports
 ```
-python run_downstream.py -m train -n S3prl_mae_ast_sanity -u wav2vec2 -d example -f
+python run_downstream.py -m train -n S3prl_mae_ast_sanity -u npc -d example -f
 ```
 
 #### Keyword Spotting 1 (KS1) (Speech Commands)
@@ -45,7 +40,7 @@ python run_downstream.py -m train -n MAE_AST_Template_Name -u mae_ast -d speech_
 
 #### Speaker Identification (SID) (VoxCeleb1)
 ```
-python run_downstream.py -m train -n MAE_AST_Template_Name -u mae_alan -d voxceleb1 -f \
+python run_downstream.py -m train -n MAE_AST_Template_Name -u mae_ast -d voxceleb1 -f \
   -k /path/to/checkpoint.pt \
   -s hidden_states \
   -o "config.downstream_expert.datarc.file_path='/path/to/VoxCeleb1/',,\
@@ -57,7 +52,7 @@ Recall ER takes place over five folds, with the resulting test score being the a
 ```
 for test_fold in fold1 fold2 fold3 fold4 fold5;
 do
-python run_downstream.py -m train -n MAE_AST_Template_Name$test_fold -u mae_alan -d emotion -f \
+python run_downstream.py -m train -n MAE_AST_Template_Name$test_fold -u mae_ast -d emotion -f \
   -k /path/to/checkpoint.pt \
   -s last_hidden_state \
   -o "/path/to/IEMOCAP_full_release',,\
