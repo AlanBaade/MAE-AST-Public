@@ -2,7 +2,7 @@
 
 This folder (mae_ast in s3prl) is the upstream module for fine-tuning MAE-AST on Superb with S3prl, and acts as a demo for how to use the MAE-AST in downstream applications.
 
-##Setting up a S3prl environment
+## Setting up a S3prl environment
 Here's an example of the environment setup used, given that fairseq and s3prl are cloned as separate folders in the home directory.
 
 ```
