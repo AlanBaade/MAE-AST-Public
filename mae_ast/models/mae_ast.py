@@ -295,7 +295,7 @@ class MAE_AST(BaseFairseqModel):
 
         return new_padding_mask
 
-    def forward_mask(self, features):
+    def forward_mask(self, features, padding_mask):
         B, T, C = features.shape
         num_retained_tokens = int((1 - self.cfg.random_mask_prob) * T)
         num_retained_tokens = max(1, num_retained_tokens)
@@ -395,7 +395,7 @@ class MAE_AST(BaseFairseqModel):
 
         # Calculate retained_idx and masked_idx. Uses safe assumption that nothing is padded during pretraining
         if mask:
-            retained_idx, masked_idx, num_masked_tokens = self.forward_mask(features)
+            retained_idx, masked_idx, num_masked_tokens = self.forward_mask(features, padding_mask)
         else:
             retained_idx = []
             masked_idx = []
