@@ -6,7 +6,7 @@ This repository contains three folders: config, mae_ast, and s3prl. Config conta
 Please email abaade@utexas.edu for questions.
 
 ## Pretrained Model Download
-Clicking the link attempts to display the model checkpoints as a text file. Use wget or open the link in a new tab and save.
+Below are the two 12-layer models used in the overall results section of the paper, with a masking ratio of 75%. Clicking the link attempts to display the model checkpoints as a text file. Use wget or open the link in a new tab and save.
 | Download | Model         | Layers | Masking | AS    | ESC-50 | KS2   | KS1   | SID   | ER    |
 |-----------|---------------|--------|---------|-------|--------|-------|-------|-------|-------|
 | [Checkpoint](https://saltlab.cs.utexas.edu/downloads/model_checkpoints/mae_ast/chunk_patch_75_12LayerEncoder.pt)         | MAE-AST Patch |     12 | Chunked | 0.306 |  0.900 | 0.979 | 0.958 | -     | 0.598 |
