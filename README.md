@@ -9,8 +9,8 @@ Please email abaade@utexas.edu for questions.
 Below are the two 12-layer models used in the overall results section of the paper, with a masking ratio of 75%. Clicking the link attempts to display the model checkpoints as a text file. Use wget or open the link in a new tab and save.
 | Download | Model         | Layers | Masking | AS    | ESC-50 | KS2   | KS1   | SID   | ER    |
 |-----------|---------------|--------|---------|-------|--------|-------|-------|-------|-------|
-| [Checkpoint](https://saltlab.cs.utexas.edu/downloads/model_checkpoints/mae_ast/chunk_patch_75_12LayerEncoder.pt)         | MAE-AST Patch |     12 | Chunked | 0.306 |  0.900 | 0.979 | 0.958 | -     | 0.598 |
-| [Checkpoint](https://saltlab.cs.utexas.edu/downloads/model_checkpoints/mae_ast/random_frame_75_12LayerEncoder.pt)         | MAE-AST Frame |     12 | Random  | 0.230 |  0.889 | 0.980 | 0.973 | 0.633 | 0.621 |
+| [Checkpoint](https://www.cs.utexas.edu/~harwath/model_checkpoints/mae_ast/chunk_patch_75_12LayerEncoder.pt)         | MAE-AST Patch |     12 | Chunked | 0.306 |  0.900 | 0.979 | 0.958 | -     | 0.598 |
+| [Checkpoint](https://www.cs.utexas.edu/~harwath/model_checkpoints/mae_ast/random_frame_75_12LayerEncoder.pt)         | MAE-AST Frame |     12 | Random  | 0.230 |  0.889 | 0.980 | 0.973 | 0.633 | 0.621 |
 
 ## Pre-Training
 Pretraining on fairseq is done as follows
