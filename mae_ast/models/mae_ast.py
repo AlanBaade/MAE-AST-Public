@@ -344,6 +344,7 @@ class MAE_AST(BaseFairseqModel):
             cur_masked_idx = set()
             chunk_size = random.randrange(3, 5 + 1)
             chan_adjust = self.task_cfg.feature_dim // self.cfg.ast_kernel_stride_chan
+            num_masked_tokens = T - num_retained_tokens
             while len(cur_masked_idx) <= num_masked_tokens:
                 t_topleft = random.randrange(T)
                 for t_offset in range(0, chunk_size):
